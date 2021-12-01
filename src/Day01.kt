@@ -1,17 +1,22 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
+    fun part1(input: List<Int>): Int {
+        var sum = 0;
+        for (i in 1 until input.size) {
+            if (input[i] > input[i - 1]) {
+                sum++;
+            }
+        }
+        return sum;
     }
 
-    fun part2(input: List<String>): Int {
-        return input.size
+    fun part2(input: List<Int>): List<Int> {
+        val newList = arrayListOf<Int>()
+        for (i in 1 until input.size - 1) {
+            newList.add(input[i - 1] + input[i] + input[i + 1])
+        }
+        return newList
     }
 
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
-    val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    val testInput = readInput("input1")
+    val mapInt = testInput.map { it.toInt() }
 }
